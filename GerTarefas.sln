@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerTarefas.API", "GerTarefas.API\GerTarefas.API.csproj", "{3F12BEA9-F39E-4993-9D54-F8C1912A637D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerTarefas.API", "GerTarefas.API\GerTarefas.API.csproj", "{3F12BEA9-F39E-4993-9D54-F8C1912A637D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerTarefas.Application", "GerTarefas.Application\GerTarefas.Application.csproj", "{CD1DE17D-FF68-4EAB-8EF6-7E288A611F5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerTarefas.CrossCutting", "GerTarefas.CrossCutting\GerTarefas.CrossCutting.csproj", "{7D61C541-9BA3-4E46-9668-98FBD7693EC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerTarefas.Domain", "GerTarefas.Domain\GerTarefas.Domain.csproj", "{80B07C87-0EB9-4771-8E5D-D78911623C83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerTarefas.Infrastructure", "GerTarefas.Infrastructure\GerTarefas.Infrastructure.csproj", "{497A0CED-3059-44E2-A6D0-4EBC7827403B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{3F12BEA9-F39E-4993-9D54-F8C1912A637D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F12BEA9-F39E-4993-9D54-F8C1912A637D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F12BEA9-F39E-4993-9D54-F8C1912A637D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD1DE17D-FF68-4EAB-8EF6-7E288A611F5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD1DE17D-FF68-4EAB-8EF6-7E288A611F5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD1DE17D-FF68-4EAB-8EF6-7E288A611F5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD1DE17D-FF68-4EAB-8EF6-7E288A611F5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D61C541-9BA3-4E46-9668-98FBD7693EC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D61C541-9BA3-4E46-9668-98FBD7693EC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D61C541-9BA3-4E46-9668-98FBD7693EC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D61C541-9BA3-4E46-9668-98FBD7693EC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80B07C87-0EB9-4771-8E5D-D78911623C83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80B07C87-0EB9-4771-8E5D-D78911623C83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80B07C87-0EB9-4771-8E5D-D78911623C83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80B07C87-0EB9-4771-8E5D-D78911623C83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{497A0CED-3059-44E2-A6D0-4EBC7827403B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{497A0CED-3059-44E2-A6D0-4EBC7827403B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{497A0CED-3059-44E2-A6D0-4EBC7827403B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{497A0CED-3059-44E2-A6D0-4EBC7827403B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
