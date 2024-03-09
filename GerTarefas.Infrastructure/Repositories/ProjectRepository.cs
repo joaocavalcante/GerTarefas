@@ -2,7 +2,6 @@
 using GerTarefas.Domain.Entities;
 using GerTarefas.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 
 namespace GerTarefas.Infrastructure.Repositories;
 
@@ -30,8 +29,9 @@ public class ProjectRepository : IProjectRepository
         var project = await GetProjectById(projectId);
         if (project is null)
         {
-            throw new InvalidOperationException("Project not found");
+            throw new KeyNotFoundException("Projeto não encontrado");
         }
+
         db.Projects.Remove(project);
         return project;
     }
@@ -41,7 +41,7 @@ public class ProjectRepository : IProjectRepository
         var project = await db.Projects.FindAsync(projectId);
         if (project is null)
         {
-            throw new InvalidOperationException("Project not found");
+            throw new KeyNotFoundException("Projeto não encontrado");
         }
         return project;
     }

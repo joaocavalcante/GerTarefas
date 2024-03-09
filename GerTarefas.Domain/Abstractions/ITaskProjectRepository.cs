@@ -9,4 +9,5 @@ public interface ITaskProjectRepository
     Task<TaskProject> DeleteTask(int taskId);
     Task<TaskProject> GetTaskById(int taskId);
     Task<IEnumerable<TaskProject>> GetTasks();
+    Task<IEnumerable<TaskProject>> GetTasksByProjectId(int projectID);
 }

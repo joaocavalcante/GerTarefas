@@ -29,7 +29,7 @@ public class TaskProjectRepository : ITaskProjectRepository
         var task = await GetTaskById(taskId);
         if (task is null)
         {
-            throw new InvalidOperationException("Task not found");
+            throw new KeyNotFoundException("Tarefa não encontrada");
         }
         db.TasksProject.Remove(task);
         return task;
@@ -40,7 +40,7 @@ public class TaskProjectRepository : ITaskProjectRepository
         var task = await db.TasksProject.FindAsync(taskId);
         if (task is null)
         {
-            throw new InvalidOperationException("Task not found");
+            throw new KeyNotFoundException("Tarefa não encontrada"); ;
         }
         return task;
     }
@@ -48,6 +48,12 @@ public class TaskProjectRepository : ITaskProjectRepository
     public async Task<IEnumerable<TaskProject>> GetTasks()
     {
         var taskList = await db.TasksProject.ToListAsync();
+        return taskList ?? Enumerable.Empty<TaskProject>();
+    }
+
+    public async Task<IEnumerable<TaskProject>> GetTasksByProjectId(int projectID)
+    {
+        var taskList = await db.TasksProject.Where(c => c.ProjectID == projectID).ToListAsync();
         return taskList ?? Enumerable.Empty<TaskProject>();
     }
 
