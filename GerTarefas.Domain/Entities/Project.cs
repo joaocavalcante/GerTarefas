@@ -8,27 +8,31 @@ public sealed class Project
     public int ProjectID { get; set; }
     public string? Name { get; set; }
     public DateTime? Date { get; set; }
-    public ICollection<Task>? Tasks { get; set; }
+    public ICollection<TaskProject>? TaskProjects { get; set; }
 
+    public Project() { }
 
     [JsonConstructor]
-    public Project(int projectid, string name, DateTime date)
+    public Project(string name, DateTime date)
     {
-        ValidateDomain(projectid, name, date);
+        ValidateDomain(name, date);
     }
 
-    private void ValidateDomain(int projectID, string name, DateTime date)
+    public void Update(string name, DateTime date)
     {
-        DomainValidation.When(projectID <= 0,
-            "Invalid Id value.");
+        ValidateDomain(name, date);
+    }
+
+    private void ValidateDomain(string name, DateTime date)
+    {
 
         DomainValidation.When(string.IsNullOrEmpty(name),
-            "Invalid name value");
+            "[name] invalido");
 
         DomainValidation.When(date.Equals(null),
-            "Invalid date value");
+            "[date] invalido");
 
-        ProjectID = projectID;
+        //ProjectID = projectID;
         Name = name;
         Date = date;
     }

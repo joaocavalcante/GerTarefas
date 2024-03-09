@@ -12,8 +12,4 @@
     <ProjectReference Include="..\GerTarefas.Infrastructure\GerTarefas.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="AppDependencies\" />
-  </ItemGroup>
-
 </Project>

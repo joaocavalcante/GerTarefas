@@ -23,14 +23,18 @@ public sealed class LogTask
     public int UserID { get; set; }
     public UserAccount? User { get; set; }
 
+    public int TaskID { get; set; }
+    public TaskProject? TaskProject { get; set; }
+
+    public LogTask() { }
 
     [JsonConstructor]
-    public LogTask(int logID, DateTime date, string description, string comment, StatusEnum statusTask, int userID)
+    public LogTask(int logID, DateTime date, string description, string comment, StatusEnum statusTask, int userID, int taskID)
     {
-        ValidateDomain(logID, date, description, comment, statusTask, userID);
+        ValidateDomain(logID, date, description, comment, statusTask, userID, taskID);
     }
 
-    private void ValidateDomain(int logID, DateTime date, string description, string comment, StatusEnum statusTask, int userID)
+    private void ValidateDomain(int logID, DateTime date, string description, string comment, StatusEnum statusTask, int userID, int taskID)
     {
         DomainValidation.When(logID <= 0,
             "Invalid Id value.");
@@ -50,12 +54,16 @@ public sealed class LogTask
         DomainValidation.When(userID <= 0,
             "Invalid userID value.");
 
+        DomainValidation.When(taskID <= 0,
+            "Invalid taskID value.");
+
         LogID = logID;
         Date = date;
         Description = description;
         Comment = comment;
         StatusTask = statusTask;
         UserID = userID;
+        TaskID = taskID;
 
     }
 }

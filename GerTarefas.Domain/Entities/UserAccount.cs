@@ -11,8 +11,9 @@ public sealed class UserAccount
     public string? Email { get; private set; }
     public bool? IsActive { get; private set; }
 
-    public ICollection<LogTask>? LogsTask { get; set; }
+    public ICollection<LogTask>? LogsTasks { get; set; }
 
+    public UserAccount() { }
 
     [JsonConstructor]
     public UserAccount(int userID, string username, string function, string email, bool? active)
