@@ -28,6 +28,22 @@ Este projeto foi desenvolvido utilizando os princípios da Clean Architecture e 
 - .NET Core SDK (versão 8)
 - SQL Server (ou outro banco de dados suportado)
 
+## Deploy e Execução no Docker
+
+### Baixando imagem do sql-server (2017) ( Caso queira rodar o SQL Server em container )
+-docker pull mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+
+### criando e executando o contêiner do Sql Server
+- docker run -d mcr.microsoft.com/mssql/server:2017-latest-ubuntu -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Pwssa#2024' -e 'MSSQL_PID=Express' -p 1433:1433
+
+### criando e executando o contêiner da aplicação
+- caso use o SQL Server em servidor alterar o arquivo docker-compose.yml com as informações do banco 
+- cd \<pasta da aplicação>
+- docker-compose up --build
+
+### executando a api no browser  (a porta está configurada no arquivo launchSettings.json)
+- https://localhost:44382/swagger/index.html
+
 ## Perguntas para os POs
 
 ### Escopo do Projeto
