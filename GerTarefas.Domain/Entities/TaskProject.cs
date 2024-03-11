@@ -13,26 +13,23 @@ public sealed class TaskProject
     public StatusEnum? Status { get; set; }
     public PrioriryEnum? Priority { get; set; }
     public string? Comment { get; set; }
-
     public int ProjectID { get; set; }
-    public Project? Project { get; set; }
-
-    public ICollection<LogTask>? LogTasks { get; set; }
+    public string? UserName { get; set; }
 
     public TaskProject() { }
 
     [JsonConstructor]
-    public TaskProject(string title, string description, DateTime dueDate, StatusEnum status, PrioriryEnum priority, string comment, int projectID)
+    public TaskProject(string title, string description, DateTime dueDate, StatusEnum status, PrioriryEnum priority, string comment, int projectID, string userName)
     {
-        ValidateDomain(title, description, dueDate, status, priority, comment, projectID);
+        ValidateDomain(title, description, dueDate, status, priority, comment, projectID, userName);
     }
 
-    public void Update(string description, StatusEnum status, string comment)
+    public void Update(string description, StatusEnum status, string comment, string userName)
     {
-        ValidateForUpdateDomain(description, status, comment);
+        ValidateForUpdateDomain(description, status, comment, userName);
     }
 
-    private void ValidateDomain(string title, string description, DateTime dueDate, StatusEnum status, PrioriryEnum priority, string comment, int projectID)
+    private void ValidateDomain(string title, string description, DateTime dueDate, StatusEnum status, PrioriryEnum priority, string comment, int projectID, string userName)
     {
         DomainValidation.When(string.IsNullOrEmpty(title),
             "[title] invalido");
@@ -52,6 +49,9 @@ public sealed class TaskProject
         DomainValidation.When(string.IsNullOrEmpty(comment),
             "[comment] invalido");
 
+        DomainValidation.When(string.IsNullOrEmpty(userName),
+            "[userName] invalido");
+
         DomainValidation.When(projectID <= 0, "[projectID] invalido.");
 
         Title = title;
@@ -61,9 +61,10 @@ public sealed class TaskProject
         Priority = priority;
         Comment = comment;
         ProjectID = projectID;
+        UserName = userName;
     }
 
-    private void ValidateForUpdateDomain(string description, StatusEnum status, string comment)
+    private void ValidateForUpdateDomain(string description, StatusEnum status, string comment, string userName)
     {
         DomainValidation.When(string.IsNullOrEmpty(description),
             "[description] invalido");
@@ -74,9 +75,13 @@ public sealed class TaskProject
         DomainValidation.When(string.IsNullOrEmpty(comment),
             "[comment] invalido");
 
+        DomainValidation.When(string.IsNullOrEmpty(userName),
+            "[userName] invalido");
+
         Description = description;
         Status = status;
         Comment = comment;
+        UserName = userName;
     }
 
 }

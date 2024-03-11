@@ -19,7 +19,17 @@ public class UserAccountRepository : IUserAccountRepository
         var user = await db.UsersAccount.FindAsync(userId);
         if (user is null)
         {
-            throw new InvalidOperationException("User not found");
+            throw new InvalidOperationException("Regra:Usuário não encontrado");
+        }
+        return user;
+    }
+
+    public async Task<UserAccount> GetUserByName(string username)
+    {
+        var user = await db.UsersAccount.FirstOrDefaultAsync(c => c.UserName == username);
+        if (user is null)
+        {
+            throw new InvalidOperationException("Regra:Usuário não encontrado");
         }
         return user;
     }

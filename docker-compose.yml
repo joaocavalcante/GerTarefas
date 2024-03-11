@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  gertarefas.api:
+    image: ${DOCKER_REGISTRY-}gertarefasapi
+    build:
+      context: .
+      dockerfile: GerTarefas.API/Dockerfile
+    depends_on:
+      - sqlserver
+  sqlserver:
+    image: microsoft/mssql-server-linux:2017-latest
+    hostname: 'sqlserver'
+    environment:
+      ACCEPT_EULA: 'Y'
+      SA_PASSWORD: "Pwssa#2024"
+    volumes:
+      - c:\dados\volumes\mssql:/var/opt/mssql3
+    ports:
+      - '11433:1433'    
+    expose:
+      - 1433

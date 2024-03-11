@@ -8,22 +8,22 @@ public sealed class Project
     public int ProjectID { get; set; }
     public string? Name { get; set; }
     public DateTime? Date { get; set; }
-    public ICollection<TaskProject>? TaskProjects { get; set; }
+    public string? UserName { get; set; }
 
     public Project() { }
 
     [JsonConstructor]
-    public Project(string name, DateTime date)
+    public Project(string name, DateTime date, string userName)
     {
-        ValidateDomain(name, date);
+        ValidateDomain(name, date, userName);
     }
 
-    public void Update(string name, DateTime date)
+    public void Update(string name, DateTime date, string userName)
     {
-        ValidateDomain(name, date);
+        ValidateDomain(name, date, userName );
     }
 
-    private void ValidateDomain(string name, DateTime date)
+    private void ValidateDomain(string name, DateTime date, string userName)
     {
 
         DomainValidation.When(string.IsNullOrEmpty(name),
@@ -32,8 +32,12 @@ public sealed class Project
         DomainValidation.When(date.Equals(null),
             "[date] invalido");
 
+        DomainValidation.When(string.IsNullOrEmpty(userName),
+            "[userName] invalido");
+
         //ProjectID = projectID;
         Name = name;
         Date = date;
+        UserName = userName;    
     }
 }

@@ -18,12 +18,14 @@ public class UpdateProjectCommand : ProjectCommandBase
         }
         public async Task<Project> Handle(UpdateProjectCommand request, CancellationToken cancellationToken)
         {
+            var userAccount = await _unitOfWork.UserAccountRepository.GetUserByName(request.UserName); // Apenas para verificar existencia de usuário
+
             var existingProject = await _unitOfWork.ProjectRepository.GetProjectById(request.Id);
 
             if (existingProject is null)
-                throw new InvalidOperationException("Project not found");
+                throw new InvalidOperationException("Regra:Projeto não encontrado");
 
-            existingProject.Update(request.Name, Convert.ToDateTime(request.Date));
+            existingProject.Update(request.Name, Convert.ToDateTime(request.Date), request.UserName);
             _unitOfWork.ProjectRepository.UpdateProject(existingProject);
             await _unitOfWork.CommitAsync();
 

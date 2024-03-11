@@ -8,15 +8,15 @@ public class GetTasksQuery : IRequest<IEnumerable<TaskProject>>
 {
     public class GetTaskQueryHandler : IRequestHandler<GetTasksQuery, IEnumerable<TaskProject>>
     {
-        private readonly ITaskProjectRepository _taskProjectRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public GetTaskQueryHandler(ITaskProjectRepository taskProjectRepository)
+        public GetTaskQueryHandler(IUnitOfWork unitOfWork)
         {
-            _taskProjectRepository = taskProjectRepository;
+            _unitOfWork = unitOfWork;
         }
         public async Task<IEnumerable<TaskProject>> Handle(GetTasksQuery request, CancellationToken cancellationToken)
         {
-            var tasks = await _taskProjectRepository.GetTasks();
+            var tasks = await _unitOfWork.TaskProjectRepository.GetTasks();
             return tasks;
         }
     }

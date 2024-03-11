@@ -1,13 +1,6 @@
 ﻿using GerTarefas.Domain.Enum;
 using GerTarefas.Domain.Validation;
-using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GerTarefas.Domain.Entities;
 
@@ -15,55 +8,45 @@ public sealed class LogTask
 {
     public int LogID { get; set; }
     public DateTime? Date { get; set; }
-    public string? Description { get; set; }
+    public string? History { get; set; }
     public string? Comment { get; set; }
     public StatusEnum? StatusTask { get; set; }
-
-
-    public int UserID { get; set; }
-    public UserAccount? User { get; set; }
-
+    public string UserName { get; set; }
     public int TaskID { get; set; }
-    public TaskProject? TaskProject { get; set; }
 
     public LogTask() { }
 
     [JsonConstructor]
-    public LogTask(int logID, DateTime date, string description, string comment, StatusEnum statusTask, int userID, int taskID)
+    public LogTask(DateTime date, string history, string comment, StatusEnum statusTask, string userName, int taskID)
     {
-        ValidateDomain(logID, date, description, comment, statusTask, userID, taskID);
+        ValidateDomain(date, history, comment, statusTask, userName, taskID);
     }
 
-    private void ValidateDomain(int logID, DateTime date, string description, string comment, StatusEnum statusTask, int userID, int taskID)
+    private void ValidateDomain(DateTime date, string history, string comment, StatusEnum statusTask, string userName, int taskID)
     {
-        DomainValidation.When(logID <= 0,
-            "Invalid Id value.");
+         DomainValidation.When(date.Equals(null),
+            "[date] invalido");
 
-        DomainValidation.When(date.Equals(null),
-            "Invalid dueDate value");
-
-        DomainValidation.When(string.IsNullOrEmpty(description),
-            "Invalid description value");
+        DomainValidation.When(string.IsNullOrEmpty(history),
+            "[history] invalido");
 
         DomainValidation.When(string.IsNullOrEmpty(comment),
-            "Invalid comment value");
+            "[comment] invalido");
 
         DomainValidation.When(statusTask.Equals(null),
-            "Invalid status value");
+            "[statusTask] value");
 
-        DomainValidation.When(userID <= 0,
-            "Invalid userID value.");
+        DomainValidation.When(string.IsNullOrEmpty(userName),
+            "[userName] invalido");
 
         DomainValidation.When(taskID <= 0,
-            "Invalid taskID value.");
+            "[taskID] invalido");
 
-        LogID = logID;
         Date = date;
-        Description = description;
+        History = history;
         Comment = comment;
         StatusTask = statusTask;
-        UserID = userID;
+        UserName = userName;
         TaskID = taskID;
-
     }
 }

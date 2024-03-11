@@ -8,5 +8,5 @@ public interface IProjectRepository
     void UpdateProject(Project project);
     Task<Project> DeleteProject(int projectId);
     Task<Project> GetProjectById(int projectId);
-    Task<IEnumerable<Project>> GetProjects();
+    Task<IEnumerable<Project>> GetProjects(string username);
 }

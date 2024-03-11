@@ -10,15 +10,15 @@ public class GetTaskByIdQuery : IRequest<Project>
 
     public class GetProjectByIdQueryHandler : IRequestHandler<GetTaskByIdQuery, Project>
     {
-        private readonly IProjectRepository _projectRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public GetProjectByIdQueryHandler(IProjectRepository projectRepository)
+        public GetProjectByIdQueryHandler(IUnitOfWork unitOfWork)
         {
-            _projectRepository = projectRepository;
+            _unitOfWork = unitOfWork;
         }
         public async Task<Project> Handle(GetTaskByIdQuery request, CancellationToken cancellationToken)
         {
-            var Project = await _projectRepository.GetProjectById(request.Id);
+            var Project = await _unitOfWork.ProjectRepository.GetProjectById(request.Id);
             return Project;
         }
     }

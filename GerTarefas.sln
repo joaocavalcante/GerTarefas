@@ -5,13 +5,17 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerTarefas.API", "GerTarefas.API\GerTarefas.API.csproj", "{3F12BEA9-F39E-4993-9D54-F8C1912A637D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerTarefas.Application", "GerTarefas.Application\GerTarefas.Application.csproj", "{CD1DE17D-FF68-4EAB-8EF6-7E288A611F5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerTarefas.Application", "GerTarefas.Application\GerTarefas.Application.csproj", "{CD1DE17D-FF68-4EAB-8EF6-7E288A611F5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerTarefas.CrossCutting", "GerTarefas.CrossCutting\GerTarefas.CrossCutting.csproj", "{7D61C541-9BA3-4E46-9668-98FBD7693EC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerTarefas.CrossCutting", "GerTarefas.CrossCutting\GerTarefas.CrossCutting.csproj", "{7D61C541-9BA3-4E46-9668-98FBD7693EC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerTarefas.Domain", "GerTarefas.Domain\GerTarefas.Domain.csproj", "{80B07C87-0EB9-4771-8E5D-D78911623C83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerTarefas.Domain", "GerTarefas.Domain\GerTarefas.Domain.csproj", "{80B07C87-0EB9-4771-8E5D-D78911623C83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerTarefas.Infrastructure", "GerTarefas.Infrastructure\GerTarefas.Infrastructure.csproj", "{497A0CED-3059-44E2-A6D0-4EBC7827403B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerTarefas.Infrastructure", "GerTarefas.Infrastructure\GerTarefas.Infrastructure.csproj", "{497A0CED-3059-44E2-A6D0-4EBC7827403B}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{71812604-81A0-46C6-9683-FC23380D6C19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerTarefas.Test", "GerTarefas.Test\GerTarefas.Test.csproj", "{1F0458BF-5A0A-48CD-A674-74487DBFC63E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{497A0CED-3059-44E2-A6D0-4EBC7827403B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{497A0CED-3059-44E2-A6D0-4EBC7827403B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{497A0CED-3059-44E2-A6D0-4EBC7827403B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71812604-81A0-46C6-9683-FC23380D6C19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71812604-81A0-46C6-9683-FC23380D6C19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71812604-81A0-46C6-9683-FC23380D6C19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71812604-81A0-46C6-9683-FC23380D6C19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F0458BF-5A0A-48CD-A674-74487DBFC63E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F0458BF-5A0A-48CD-A674-74487DBFC63E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F0458BF-5A0A-48CD-A674-74487DBFC63E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F0458BF-5A0A-48CD-A674-74487DBFC63E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

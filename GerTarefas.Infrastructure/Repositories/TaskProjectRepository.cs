@@ -56,7 +56,6 @@ public class TaskProjectRepository : ITaskProjectRepository
         var taskList = await db.TasksProject.Where(c => c.ProjectID == projectID).ToListAsync();
         return taskList ?? Enumerable.Empty<TaskProject>();
     }
-
     public void UpdateTask(TaskProject task)
     {
         if (task is null)

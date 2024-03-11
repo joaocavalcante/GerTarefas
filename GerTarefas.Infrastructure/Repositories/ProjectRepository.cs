@@ -46,9 +46,9 @@ public class ProjectRepository : IProjectRepository
         return project;
     }
 
-    public async Task<IEnumerable<Project>> GetProjects()
+    public async Task<IEnumerable<Project>> GetProjects(string username)
     {
-        var projectist = await db.Projects.ToListAsync();
+        var projectist = await db.Projects.Where(c=>c.UserName == username).ToListAsync();
         return projectist ?? Enumerable.Empty<Project>();
     }
 

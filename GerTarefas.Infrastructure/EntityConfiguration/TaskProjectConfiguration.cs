@@ -17,5 +17,6 @@ public class TaskProjectConfiguration : IEntityTypeConfiguration<TaskProject>
         builder.Property(m => m.Priority).IsRequired();
         builder.Property(m => m.Comment).HasMaxLength(500).IsRequired();
         builder.Property(m => m.ProjectID).IsRequired();
+        builder.Property(m => m.UserName).IsRequired();
     }
 }

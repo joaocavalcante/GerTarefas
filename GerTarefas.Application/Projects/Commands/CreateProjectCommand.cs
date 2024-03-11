@@ -18,7 +18,9 @@ public class CreateProjectCommand : ProjectCommandBase
         }
         public async Task<Project> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
         {
-            var newProject = new Project(request.Name, Convert.ToDateTime(request.Date));
+            var userAccount = await _unitOfWork.UserAccountRepository.GetUserByName(request.UserName); // Apenas para verificar existencia de usuário
+
+            var newProject = new Project(request.Name, Convert.ToDateTime(request.Date), request.UserName);
 
             await _unitOfWork.ProjectRepository.AddProject(newProject);
             await _unitOfWork.CommitAsync();

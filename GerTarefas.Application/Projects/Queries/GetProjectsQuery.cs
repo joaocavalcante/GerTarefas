@@ -6,17 +6,18 @@ namespace GerTarefas.Application.Projects.Queries;
 
 public class GetTasksQuery : IRequest<IEnumerable<Project>>
 {
+    public string? UserName { get; set; }
     public class GetProjectsQueryHandler : IRequestHandler<GetTasksQuery, IEnumerable<Project>>
     {
-        private readonly IProjectRepository _projectRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public GetProjectsQueryHandler(IProjectRepository projectRepository)
+        public GetProjectsQueryHandler(IUnitOfWork unitOfWork)
         {
-            _projectRepository = projectRepository;
+            _unitOfWork = unitOfWork;
         }
         public async Task<IEnumerable<Project>> Handle(GetTasksQuery request, CancellationToken cancellationToken)
         {
-            var projects = await _projectRepository.GetProjects();
+            var projects = await _unitOfWork.ProjectRepository.GetProjects(request.UserName);
             return projects;
         }
     }

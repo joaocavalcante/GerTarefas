@@ -20,10 +20,11 @@ public class ProjetosController : ControllerBase
     }
 
     [HttpGet]
+    [Route("User/{username}")]
     [SwaggerOperation(Summary = "Listar Projetos", Description = "Lista todos os projetos do usuário.")]
-    public async Task<IActionResult> GetProjects()
+    public async Task<IActionResult> GetProjects(string username)
     {
-        var query = new GetTasksQuery();
+        var query = new GetTasksQuery { UserName = username };
         var projects = await _mediator.Send(query);
         return Ok(projects);
     }

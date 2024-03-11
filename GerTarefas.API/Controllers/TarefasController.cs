@@ -3,6 +3,7 @@ using GerTarefas.Application.Tasks.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Security;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -58,9 +59,9 @@ public class TarefasController : ControllerBase
 
     [HttpDelete("{id}")]
     [SwaggerOperation(Summary = "Remover Tarefa", Description = "Remove um tarefa de um projeto.")]
-    public async Task<IActionResult> DeleteTask(int id)
+    public async Task<IActionResult> DeleteTask(int id, string username)
     {
-        var command = new DeleteTaskCommand { Id = id };
+        var command = new DeleteTaskCommand { Id = id, UserName = username };
         var deletedtask = await _mediator.Send(command);
 
         return deletedtask != null ? Ok(deletedtask) : NotFound("Tarefa não encontrada.");

@@ -16,7 +16,7 @@ public class CustomExceptionFilter : IExceptionFilter
 
             var result = new ObjectResult(new { Errors = errors })
             {
-                StatusCode = 400, // Bad Request
+                StatusCode = StatusCodes.Status400BadRequest,
             };
 
             context.Result = result;
@@ -35,7 +35,7 @@ public class CustomExceptionFilter : IExceptionFilter
             {
                 var result = new ObjectResult(new { Errors = context.Exception.Message.Replace("Regra:","") })
                 {
-                    StatusCode = 400, // Bad Request
+                    StatusCode = StatusCodes.Status400BadRequest, 
                 };
 
                 context.Result = result;

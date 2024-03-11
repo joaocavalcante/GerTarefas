@@ -29,7 +29,7 @@ public class DeleteTaskCommand : IRequest<Project>
             var deletedProject = await _unitOfWork.ProjectRepository.DeleteProject(request.Id);
 
             if (deletedProject is null)
-                throw new KeyNotFoundException("Projeto não encontrado");
+                throw new KeyNotFoundException("Regra:Projeto não encontrado");
 
             await _unitOfWork.CommitAsync();
             return deletedProject;
