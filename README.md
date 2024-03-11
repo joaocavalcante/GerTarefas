@@ -28,6 +28,11 @@ Este projeto foi desenvolvido utilizando os princípios da Clean Architecture e 
 - .NET Core SDK (versão 8)
 - SQL Server (ou outro banco de dados suportado)
 
+### Observações
+- Foi utilizado o Inglês para nomes de Entidades, propriedades, tabelas e colunas do banco de dados
+- Para o banco de dados foi utilizado o Migrations do Entity Framework para criar o banco sem a utilização do docker na fase de construção da API.
+- Existe uma pasta SQL que contém script para criação das tabelas e inclusão de usuário da tabela relacionada.
+
 ## Deploy e Execução no Docker
 
 ### Baixando imagem do sql-server (2017) ( Caso queira rodar o SQL Server em container )
